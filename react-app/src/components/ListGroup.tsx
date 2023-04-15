@@ -4,9 +4,10 @@ import { Fragment, useState } from "react";
 interface props {
     items: string[];
     heading: string;
+    onSelectItem: (item: string) => void;
 }
 
-function ListGroup({items, heading}: props) {
+function ListGroup({items, heading, onSelectItem}: props) {
     
     //let selectedIndex = 0;
     //items = [] 
@@ -24,7 +25,7 @@ function ListGroup({items, heading}: props) {
             <ul className="list-group">
                 {items.map((item,index) => <li 
                 className={selectedIndex === index ? 'list-group-item active' : 'list-group-item'} 
-                onClick={() => {setSelectedIndex(index)}} 
+                onClick={() => {setSelectedIndex(index); onSelectItem(item)}} 
                 key={item}>{item}</li>)}
             </ul>
         </Fragment>
